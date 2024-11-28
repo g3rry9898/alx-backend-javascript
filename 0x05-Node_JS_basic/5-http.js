@@ -13,7 +13,7 @@ const app = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     res.write('This is the list of our students\n');
-    countStudents(path.resolve(__dirname, 'database.csv'))
+    countStudents(path.resolve(__dirname, process.argv[2]))
       .then(() => {
         res.end();
       })
@@ -31,4 +31,5 @@ app.listen(1245, () => {
 });
 
 module.exports = app;
+
 
