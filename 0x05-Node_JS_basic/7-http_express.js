@@ -12,7 +12,9 @@ app.get('/', (req, res) => {
 app.get('/students', (req, res) => {
   const databasePath = path.resolve(__dirname, process.argv[2]);
   countStudents(databasePath)
-    .then(() => {
+    .then((data) => {
+      res.write('This is the list of our students\n');
+      res.write(data);
       res.end();
     })
     .catch((error) => {
